@@ -16,7 +16,7 @@ spec:
         - name: react-app
           image: docker.io/ritarididier/backofficefront-frontend:latest
           ports:
-            - containerPort: 3000
+            - containerPort: 3001
 
 ---
 
@@ -30,6 +30,6 @@ spec:
     app: react-app
   ports:
     - protocol: TCP
-      port: 3000
-      targetPort: 3000
+      port: 3001
+      targetPort: 3001
   type: NodePort
