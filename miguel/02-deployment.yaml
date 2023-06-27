@@ -28,32 +28,32 @@ spec:
               memory: "512Mi"
               cpu: "0.5"
 
----
+# ---
 
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-        - name: nginx
-          image: nginx:stable-alpine
-          ports:
-            - containerPort: 80
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d/default.conf
-              readOnly: true
-      volumes:
-        - name: nginx-config
-          hostPath:
-            path: ./src/nginx/default.conf
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: nginx-deployment
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: nginx
+#   template:
+#     metadata:
+#       labels:
+#         app: nginx
+#     spec:
+#       containers:
+#         - name: nginx
+#           image: nginx:stable-alpine
+#           ports:
+#             - containerPort: 80
+#           volumeMounts:
+#             - name: nginx-config
+#               mountPath: /etc/nginx/conf.d/default.conf
+#               readOnly: true
+#       volumes:
+#         - name: nginx-config
+#           hostPath:
+#             path: ./src/nginx/default.conf
