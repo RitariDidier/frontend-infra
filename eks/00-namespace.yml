@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: ${BITBUCKET_REPO_SLUG}-${BITBUCKET_BRANCH}
+  name: backoffice-frontend-develop
