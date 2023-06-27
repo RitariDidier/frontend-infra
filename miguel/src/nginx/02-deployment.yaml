@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bff-backoffice
+  namespace: bff-backoffice-develop
+  labels:
+    app: bff-backoffice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bff-backoffice
+  template:
+    metadata:
+      labels:
+        app: bff-backoffice
+    spec:
+      containers:
+        - name: bff-backoffice
+          image: miguel8997/back-office-backend-node-app:latest
+          ports:
+            - containerPort: 3001
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "0.2"
+            limits:
+              memory: "512Mi"
+              cpu: "0.5"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:stable-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              readOnly: true
+      volumes:
+        - name: nginx-config
+          hostPath:
+            path: ./src/nginx/default.conf
