@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: react-app
-        image: 
+        image: docker.io/ritarididier/backofficefront-frontend:latest
         # 377115610504.dkr.ecr.us-east-1.amazonaws.com/backofficefront/release:build-4
         
