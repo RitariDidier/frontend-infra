@@ -2,7 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bff-backoffice
-  namespace: bff-backoffice-develop
   labels:
     app: bff-backoffice
 spec:
